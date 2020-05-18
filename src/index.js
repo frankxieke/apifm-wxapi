@@ -28,15 +28,15 @@ const request = (url, needSubDomain, method, data) => {
 }
 
 const request2 = (url, method, data) => {
-  const _url = API_BASE2_URL + url
+  const _url = API_BASE2_URL
+  data.url = url
   return new Promise((resolve, reject) => {
     wx.request({
       url: _url,
       method: method,
       data: data,
       header: {
-        'Content-Type': 'application/json',
-        'url':url
+        'Content-Type': 'application/json'
       },
       success(request) {
         resolve(request.data)
