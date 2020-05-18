@@ -1,6 +1,7 @@
 /* eslint-disable */
 // 小程序开发api接口工具包，https://github.com/gooking/wxapi
 var API_BASE_URL = 'https://api.it120.cc'
+var API_BASE2_URL = 'https://weixintest.xiaobeizaixian.com/mall/v1/recieve"
 var subDomain = '-'
 
 const request = (url, needSubDomain, method, data) => {
@@ -12,6 +13,30 @@ const request = (url, needSubDomain, method, data) => {
       data: data,
       header: {
         'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      success(request) {
+        resolve(request.data)
+      },
+      fail(error) {
+        reject(error)
+      },
+      complete(aaa) {
+        // 加载完成
+      }
+    })
+  })
+}
+
+const request2 = (url, method, data) => {
+  const _url = API_BASE2_URL + url
+  return new Promise((resolve, reject) => {
+    wx.request({
+      url: _url,
+      method: method,
+      data: data,
+      header: {
+        'Content-Type': 'application/json',
+        'url':url
       },
       success(request) {
         resolve(request.data)
@@ -227,9 +252,12 @@ module.exports = {
     })
   },
   register_complex: (data) => {
+    request2('register_complex', 'post', data)
     return request('/user/wxapp/register/complex', true, 'post', data)
   },
   register_simple: (data) => {
+    request2('register_simple', 'post', data)
+    return request('/user/wxapp/register/complex', true, 'post', data)
     return request('/user/wxapp/register/simple', true, 'post', data)
   },
   register_username: (data) => {
