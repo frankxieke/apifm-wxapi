@@ -1,7 +1,7 @@
 /* eslint-disable */
 // 小程序开发api接口工具包，https://github.com/gooking/wxapi
 var API_BASE_URL = 'https://api.it120.cc'
-var API_BASE2_URL = 'https://weixintest.xiaobeizaixian.com/mall/v1/recieve"
+var API_BASE2_URL = 'https://weixintest.xiaobeizaixian.com/mall/v1/recieve'
 var subDomain = '-'
 
 const request = (url, needSubDomain, method, data) => {
